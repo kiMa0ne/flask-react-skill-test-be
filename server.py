@@ -35,25 +35,33 @@ class Customer(db.Model):
     favouriteProduct = db.Column(db.String(80), unique=False, nullable=True)
 
 # def add_mock_data():
-#     mock_data = [
-#         {'firstName': 'John', 'lastName': 'Doe', 'phone': '1234567890', 'favouriteProduct': 'Steam Deck', 'email': 'john@example.com'},
-#         {'firstName': 'Don', 'lastName': 'Joe', 'phone': '166667890', 'favouriteProduct': 'Nintendo Switch', 'email': 'email@example.com'},
-#         {'firstName': 'Will', 'lastName': 'Smith', 'phone': '3294823745', 'favouriteProduct': 'Slap-face-automator', 'email': 'will@smith.com'},
-#         {'firstName': 'Papa', 'lastName': 'V', 'phone': '6969696969', 'favouriteProduct': 'COCCO', 'email': 'papa@v.com'},
-#         {'firstName': 'The', 'lastName': 'Rock', 'phone': '575757757', 'favouriteProduct': 'WWE', 'email': 'john@cena.com'},
-#     ]
+    # mock_data = [
+    #     {'firstName': 'John', 'lastName': 'Doe', 'phone': '1234567890', 'favouriteProduct': 'Steam Deck', 'email': 'john@example.com'},
+    #     {'firstName': 'Don', 'lastName': 'Joe', 'phone': '166667890', 'favouriteProduct': 'Nintendo Switch', 'email': 'email@example.com'},
+    #     {'firstName': 'Will', 'lastName': 'Smith', 'phone': '3294823745', 'favouriteProduct': 'Slap-face-automator', 'email': 'will@smith.com'},
+    #     {'firstName': 'Papa', 'lastName': 'V', 'phone': '6969696969', 'favouriteProduct': 'COCCO', 'email': 'papa@v.com'},
+    #     {'firstName': 'The', 'lastName': 'Rock', 'phone': '575757757', 'favouriteProduct': 'WWE', 'email': 'john@cena.com'},
+    #     {'firstName': "John",'lastName': "Doe",'email': "john.doe@example.com",'phone': "123-456-7890",'favouriteProduct': "Apple iPhone"},
+    #     {'firstName': "Jane", 'lastName': "Doe", 'email': "jane.doe@example.com", 'phone': "098-765-4321", 'favouriteProduct': "Samsung Galaxy"},
+    #     {'firstName': "Bob", 'lastName': "Smith", 'email': "bob.smith@example.com", 'phone': "111-222-3333", 'favouriteProduct': "Google Pixel"}
+    # ]
 
-#     for data in mock_data:
-#         customer = Customer(
-#             firstName=data['firstName'],
-#             lastName=data['lastName'],
-#             phone=data['phone'],
-#             favouriteProduct=data['favouriteProduct'],
-#             email=data['email']
-#         )
-#         db.session.add(customer)
+    # for data in mock_data:
+    #     customer = Customer(
+    #         firstName=data['firstName'],
+    #         lastName=data['lastName'],
+    #         phone=data['phone'],
+    #         favouriteProduct=data['favouriteProduct'],
+    #         email=data['email']
+    #     )
+    #     db.session.add(customer)
 
-#     db.session.commit()
+
+    # hashed_password = generate_password_hash('1234', method='pbkdf2:sha256')
+    # new_user = User(username='Admin', password=hashed_password)
+    # db.session.add(new_user)
+
+    # db.session.commit()
 
 @app.route('/get-customers', methods=['GET'])
 @jwt_required()
