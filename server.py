@@ -30,8 +30,8 @@ class Customer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     firstName = db.Column(db.String(80), unique=False, nullable=False)
     lastName = db.Column(db.String(80), unique=False, nullable=False)
-    email = db.Column(db.String(150), unique=True, nullable=False)
-    phone = db.Column(db.String(15), unique=True, nullable=True)
+    email = db.Column(db.String(150), unique=False, nullable=False)
+    phone = db.Column(db.String(15), unique=False, nullable=True)
     favouriteProduct = db.Column(db.String(80), unique=False, nullable=True)
 
 # def add_mock_data():
@@ -132,7 +132,10 @@ def addCustomer():
 
     # Check if a customer with the same email already exists
     if Customer.query.filter_by(email=data['email']).first():
-        return jsonify({'error': 'A customer with this email already exists'}), 400
+        return jsonify({
+                'error': 'A customer with this email already exists',
+                'fieldError': 'email'
+        }), 400
 
     newCustomer = Customer(
         firstName = data['firstName'],
@@ -141,6 +144,7 @@ def addCustomer():
         phone = data['phone'],
         favouriteProduct = data['favouriteProduct']
     )
+
     db.session.add(newCustomer)
     db.session.commit()
     return jsonify({
